@@ -1,0 +1,26 @@
+*.exe
+*.pdb
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+mentors/Zsolt_Saskovy/Gabor_Soha/M02W2/Sample, Practice/
+.idea/
+*.iml
+*.class
+mentors/Zsolt_Saskovy/Gabor_Soha/M03W1/Homework_1.docx
+~$*.*
