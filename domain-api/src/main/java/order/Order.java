@@ -16,12 +16,17 @@ public class Order {
     }
 
     public static void main(final String args[]) {
-        Book book = new Book(1, new BigDecimal("10.2"), "Sigmund Freud", "The Interpretation of Dreams");
+        Book book = new Book.BookBuilder(1, new BigDecimal("10.2")).
+                withAuthor("Sigmund Freud").
+                withTitle("The Interpretation of Dreams").build();
+        Book secondBook = new Book.BookBuilder(2, new BigDecimal("20.3")).
+                withAuthor("J. K. Rowling").
+                withTitle("Harry Potter and the Philosopher's Stone").build();
 
         Order order = new Order();
         order.AddItemToBasket(book, 2);
+        order.AddItemToBasket(secondBook);
         System.out.println("Order: " + order);
-        System.out.println("Total :" + order.getTotalCost());
     }
 
     public void AddItemToBasket(Product product){
@@ -67,15 +72,10 @@ public class Order {
         final StringBuffer sb = new StringBuffer();
         sb.append("Order [orderId=" + orderId + "] ");
         for (OrderItem orderItem : orderItems) {
-            sb.append("\n");
-            sb.append("item: " + orderItem.getItem().getProductId());
-            sb.append(" quantity : " + orderItem.getQuantity());
-            sb.append(" price: " + orderItem.getItem().getPrice());
-            sb.append(" total price: " + orderItem.getTotalPrice());
+            sb.append(orderItem);
         }
-
         sb.append("\n");
-        sb.append("total price: " + this.getTotalCost());
+        sb.append("Total price: " + this.getTotalCost());
 
         return sb.toString();
     }

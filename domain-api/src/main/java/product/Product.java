@@ -6,7 +6,7 @@ public class Product {
     final protected int productId;
     protected BigDecimal price;
 
-    private Product(ProductBuilder builder) {
+    protected Product(ProductBuilder builder) {
         this.productId = builder.productId;
         this.price = builder.price;
     }
@@ -23,16 +23,11 @@ public class Product {
         return productId;
     }
 
-//    private BigDecimal round(final BigDecimal value) {
-//        return value.setScale(2, BigDecimal.ROUND_HALF_EVEN);
-//    }
-
     @Override
     public String toString() {
-        return "Product{" +
+        return "\n\tProduct [" +
                 "productId=" + productId +
-                ", price=" + price +
-                '}';
+                ", price=" + price;
     }
 
     @Override
@@ -61,11 +56,6 @@ public class Product {
         public ProductBuilder(final int productId, BigDecimal price) {
             this.productId = productId;
             this.price = price;
-        }
-
-        public ProductBuilder withPrice(BigDecimal price) {
-            this.price = price;
-            return this;
         }
 
         public Product build() {

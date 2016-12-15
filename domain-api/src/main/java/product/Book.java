@@ -6,10 +6,10 @@ public class Book extends Product{
     private String title;
     private String author;
 
-    public Book(final int productId, BigDecimal price, String author, String title) {
-        super(productId, price);
-        this.author = author;
-        this.title = title;
+    protected Book(BookBuilder builder) {
+        super(builder);
+        this.title = builder.title;
+        this.author = builder.author;
     }
 
     public String getAuthor() {
@@ -55,6 +55,27 @@ public class Book extends Product{
 
     @Override
     public String toString() {
-        return super.toString() + " Book [author=" + author + "]";
+        return super.toString() + ", author=" + author + ", title=" + title;
+    }
+
+    public static class BookBuilder extends ProductBuilder{
+        private String title;
+        private String author;
+
+        public BookBuilder(int productId, BigDecimal price) {
+            super(productId, price);
+        }
+
+        public BookBuilder withTitle(String title){
+            this.title = title;
+            return this;
+        }
+        public BookBuilder withAuthor(String author){
+            this.author = author;
+            return this;
+        }
+        public Book build(){
+            return new Book(this);
+        }
     }
 }

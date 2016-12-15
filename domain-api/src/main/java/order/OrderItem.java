@@ -65,6 +65,6 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return "\n OrderItem [item=" + item + ", quantity=" + quantity + " total cost=" + getTotalPrice() +  "]";
+        return item + ", quantity=" + quantity + ", total cost=" + getTotalPrice() +  "]";
     }
 }
